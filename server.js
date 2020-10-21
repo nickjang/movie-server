@@ -3,7 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
-const Data = require('./data.json');
+const Movies = require('./data.json');
 const TOKEN = process.env.API_TOKEN;
 
 const app = express();
@@ -31,7 +31,7 @@ function authorize(req, res, next) {
  */
 function handleGetMovies(req, res) {
   const { genre, country, avg_vote } = req.query;
-  let body = Data;
+  let body = Movies;
 
   if (genre) {
     body = body.filter(movie => movie.genre.toLowerCase().includes(genre.toLowerCase()));
@@ -47,7 +47,6 @@ function handleGetMovies(req, res) {
 
   res.json(body);
 }
-
 
 app.get('/movie', handleGetMovies);
 

@@ -3,6 +3,3 @@ node_modules
 
 #environment vars
 .env
-
-#sample data
-data.json
